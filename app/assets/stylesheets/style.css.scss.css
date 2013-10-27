@@ -1,0 +1,42 @@
+body {
+	padding: 0;
+	margin: 0;
+	background-image : image-url("wall.png"); 
+}
+
+/* header*/
+#logo {
+	position: absolute;
+	left: 20px;
+	top: 20px;
+}
+
+/* mac_dock - bottom */
+.dock_container {
+	position: fixed;
+	width: 100%;
+	bottom: 0px;
+	text-align: center;
+	height: 120px;
+}
+.dock_item {
+	display: inline-block;
+	font: bold 18px Arial, Helvetica, sans-serif;
+	position: relative;
+	text-align: center;
+	width: 50px;
+	bottom: 0px;
+}
+.dock_item:hover > span{
+	visibility: visible;	
+}
+.dock_item span {
+	visibility: hidden;
+	text-decoration: none;
+}
+
+.dock_item img {
+	border: none; 
+	width: 100%; 
+	bottom: 0px;
+}
