@@ -13,8 +13,10 @@ $(document).ready(
 		next2=parent1.next().next().find(" a ");
 		var originSize=parent1.width();
 		var goalSize=100;
+		var dock_items =$('a.dock_item');
+		dock_items.width($(window).height()*0.05);
 
-		$('a.dock_item').mouseover(function (e) {
+		dock_items.mouseover(function (e) {
 			parent1=$(this);
 			prev1=parent1.prev();
 			prev2=prev1.prev();
@@ -26,7 +28,7 @@ $(document).ready(
 			if (next2.hasClass("hide_dock")) 
 				next2=$();		
 		});
-		$('a.dock_item').mousemove(function (e) {
+		dock_items.mousemove(function (e) {
 			curX = e.pageX + document.documentElement.scrollTop;
 			curY = e.pageY + document.documentElement.scrollLeft;
 			offsetX = $(this).offset().left;
@@ -53,8 +55,15 @@ $(document).ready(
 			next2.width(enlargeRate*smoothRate*0.375+originSize);
 		});
 
-		$('div.dock_container').mouseleave(function(e){
-			$('a.dock_item').animate({width: originSize},100);	
-		});		
+		$('div.dock_container').hover(
+			function (e1) {
+				$('div.dock_container').height(goalSize+20);
+				dock_items.width(originSize);
+			},
+			function (e2){
+				dock_items.animate({width: $(window).height()*0.05},100);
+				$(this).animate({height: $(window).height()*0.1},100);	
+			}
+		);		
 	});
 	
